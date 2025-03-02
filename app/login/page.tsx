@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react';
 
 export default function Page() {
@@ -12,6 +13,9 @@ export default function Page() {
     const router = useRouter();
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [error, setError] = useState(''); 
+
+    const searchParams = useSearchParams()
+    const msg = searchParams.get('msg')
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -63,11 +67,12 @@ export default function Page() {
                         height={100}
                         width={100}
                     />
-                    <Link href={"/signup"} className='text-primary md:text-white bg-white md:bg-primary px-4 py-2 font-bold hover:bg-gray-200 md:hover:bg-primary/80'>Sign up</Link>
+                    <Link href={"/signup"} className='text-primary md:text-white bg-white md:bg-primary px-4 py-2 font-bold hover:bg-gray-200 md:hover:bg-primary/80 rounded-md'>Sign up</Link>
                 </div>
                 <div className='flex flex-col justify-center items-center w-full'>
-                    <h3 className='font-bold text-white md:text-black text-[27px] mb-14 w-full text-center p-2'>Login into your account</h3>
-                    <form onSubmit={handleSubmit} className='text-sm w-full md:max-w-[400px] p-3 bg-white text-gray-400'>
+                    <h3 className='font-bold text-white md:text-black text-[27px] mb-4 w-full text-center p-2'>Login into your account</h3>
+                    <form onSubmit={handleSubmit} className='text-sm w-full md:max-w-[400px] p-3 bg-white text-gray-400 rounded-md py-8'>
+                    <p className='text-green-600 text-sm text-center mb-4'>{msg}</p>
                         <div className='flex items-center border dark:border-gray-500 border-b-2 border-b-primary mb-8 bg-gray-100'>
                             <Mail className='mx-1 dark:text-primary' />
                             <input type="email" name='email' placeholder='Email' className='p-2 w-full focus:ring-0 outline-none bg-transparent text-black' required/>
@@ -91,8 +96,7 @@ export default function Page() {
                     </form>
                 </div>
                 <div className='text-center mt-6 text-sm'>
-                    <p>By confirming your email, you agree to our Terms of Service</p>
-                    <p>and that you have read and understood our Privacy Policy</p>
+                    <p>By confirming your email, you agree to our Terms of Service and that you have read and understood our Privacy Policy</p>
                 </div>
             </div>
         </div>

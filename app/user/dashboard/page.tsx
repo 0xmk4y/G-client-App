@@ -1,7 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { ChevronRight } from "lucide-react";
 import React from "react";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 
 export default function page() {
   return (

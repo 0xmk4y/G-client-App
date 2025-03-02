@@ -46,7 +46,7 @@ export default function SignUpModal({ setActive }: ActiveProps) {
                 console.log('Signup successful');
                 const responseData = await response.json();
                 localStorage.setItem('user', JSON.stringify(responseData.user));
-                router.push('/user/dashboard');
+                router.push('/login?msg=Account+created+successfully.+Please+login');
             } else {
                 // Handle signup error
                 const errorData = await response.json();

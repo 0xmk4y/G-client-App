@@ -49,6 +49,9 @@ export default function NavBar() {
                 )}
             </div>
 
+
+
+
             {/* Mobile */}
             <div className='w-full flex justify-between md:hidden'>
                 <Image
