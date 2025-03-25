@@ -34,6 +34,7 @@ export async function POST(req: Request) {
         return new Response(JSON.stringify(newLearner), { status: 201 });
 
     } catch (error) {
+        console.log('Error creating Leaner', error);
         return new Response('Error creating Leaner', { status: 500 });
     }
 }

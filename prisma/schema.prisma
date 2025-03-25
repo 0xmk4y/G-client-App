@@ -24,6 +24,7 @@ model User {
   firstName String
   lastName  String
   password  String
+  learner  Learner?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -64,6 +65,8 @@ model Learner {
   image       String
   description String
   invoices    Invoice[] @relation
+  user        User  @relation(fields: [UserId], references: [id])
+  UserId Int  @unique
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
 }
